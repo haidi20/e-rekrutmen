@@ -12,7 +12,7 @@
       </div>
     </div>
     <hr class="dashed m mt20 mb20">
-    <form action="#" method="get" class="form-horizontal">
+    <form action="#" method="post" class="form-horizontal">
       <input type="hidden" name="_method" value="#">
       {{ csrf_field() }}
       <div class="row">
