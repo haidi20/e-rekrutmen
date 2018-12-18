@@ -32,6 +32,9 @@
         				</ul>
         			</div>
         		</div>
+                <div class="row">
+                    <a href="#" class="btn btn-md btn-success button-top">Kirim Lamaran</a>
+                </div>
         	</div>
         </div>
         <div class="col-md-4">
@@ -43,7 +46,7 @@
         		</div>
         		<h5 align="center">
         			Profil perusahaan adalah deskripsi ringkas suatu perusahaan yang mencerminkan kualitas serta fokus kerja dari satu perusahaan. Biasanya, profil perusahaan (company profile) dibutuhkan saat kamu akan mengajukan penawaran atau investasi kepada calon pembeli, investor maupun kerjasama dengan mitra strategis bisnis.
-        		</h5 >
+        		</h5>
         	</div>
         </div>
     </div>

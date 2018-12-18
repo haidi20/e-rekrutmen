@@ -15,15 +15,10 @@ Route::get('/',function(){
 
   Route::get('pengaturan', 'PengaturanController@index');
 
-  // Route::resource('biodata', 'BiodataController');
-  Route::get('biodata/create', function(){
-  	return view('pengguna.form-biodata');
-  });
-  Route::get('biodata', function(){
-  	return view('pengguna.biodata');
-  });
-
+  Route::resource('biodata', 'BiodataController');
   Route::resource('lowongan', 'LowonganController');
+  Route::resource('tanggungjawab', 'TanggungJawabController');
+  Route::resource('kualifikasi', 'KualifikasiController');
 
 //auth laravel
 Auth::routes();

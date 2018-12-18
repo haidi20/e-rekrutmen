@@ -44,7 +44,7 @@
 						</div>
         			</div>
         			<div class="col-md-4">
-        				<a href="#" class="btn btn-md btn-primary">Edit Data</a>
+        				<a href="{{url('biodata/create')}}" class="btn btn-md btn-primary">Edit Data</a>
         			</div>
         		</div>
         	</div>

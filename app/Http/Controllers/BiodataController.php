@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class BiodataController extends Controller
 {
-    public function create()
-    {
-    	return $this->form();
-    }
+	public function index()
+	{
+		return view('pengguna.biodata');
+	}
 
-    public function form($id=null)
+    public function create()
     {
     	return view('pengguna.form-biodata');
     }
