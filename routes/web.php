@@ -20,5 +20,12 @@ Route::get('/',function(){
   Route::resource('tanggungjawab', 'TanggungJawabController');
   Route::resource('kualifikasi', 'KualifikasiController');
 
+  Route::get('show-map', function(){
+    return view('map.map');
+  });
+  Route::get('create-map', function(){
+    return view('map.create');
+  });
+
 //auth laravel
 Auth::routes();
