@@ -15,4 +15,9 @@ class LowonganController extends Controller
     {
     	return view('lowongan.form');
     }
+
+    public function show()
+    {
+    	return view('lowongan.detail');
+    }
 }

@@ -27,6 +27,8 @@
       </div>              
       <div class="row">
         <div class="col-md-3 col-md-offset-1">
+          <a href="javascript:;" class="btn btn-md btn-danger" onClick="kurang()">Hapus</a>
+          <a href="javascript:;" class="btn btn-md btn-info" onClick="tambah('Kualifikasi')">Tambah</a>
           <button class="btn btn-success btn-md">Kirim</button>
         </div>
       </div>

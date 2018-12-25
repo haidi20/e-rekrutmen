@@ -17,6 +17,7 @@ Route::get('/',function(){
 
   Route::resource('biodata', 'BiodataController');
   Route::resource('lowongan', 'LowonganController');
+  // Route::get('lowongan/detail', 'LowonganController@detail');
   Route::resource('tanggungjawab', 'TanggungJawabController');
   Route::resource('kualifikasi', 'KualifikasiController');
 

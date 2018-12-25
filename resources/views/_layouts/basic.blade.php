@@ -27,6 +27,33 @@
       $('#select2').select2();
     } );
     </script>
+    <script>
+      var nomor = 1;
+      
+      function tambah(fungsi)
+      {
+        var form = "";
+        nomor++;
+        // form = form + "<div id=''>";
+        form = form + "<label class='nama_"+nomor+"'>Nama "+fungsi+"</label>";
+        form = form + "<input type='text' name='nama[]' class='form-control nama_"+nomor+"' value=''>";
+        // form = form + "</div>"
+
+        $('.form-group').append(form);
+      }
+
+      function kurang()
+      {
+        // var jumlah = $('.form-control').length;
+        // console.log(jumlah);
+        
+        $('.nama_'+jumlah).remove();
+
+        if(nomor != 1){
+          nomor--;
+        }
+      }
+    </script>
     @yield('script-bottom')
   </body>
 </html>

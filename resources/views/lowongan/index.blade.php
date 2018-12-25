@@ -20,32 +20,32 @@
     </div> --}}
     <br>
     <div class="row">
-  <div class="col-md-12">
-    <table class="table table-bordered table-custom">
-      <thead>
-        <tr>
-          <th width="10">No</th>
-          <th>Nama Perusahaan</th>
-          <th>Nama Bidang</th>
-          <th width="200px">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>PT Maju Jaya</td>
-          <td>Akuntansi</td>
-          <td>
-            <a href="{{url('lowongan/detail')}}" class="btn btn-warning btn-sm">Detail</a>
-            <a href="#" class="btn btn-info btn-sm">Edit</a>
-            <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    {{-- {!! $sekolah->appends(Request::input()); !!} --}}
-  </div>
-</div>
+      <div class="col-md-12">
+        <table class="table table-bordered table-custom">
+          <thead>
+            <tr>
+              <th width="10">No</th>
+              <th>Nama Perusahaan</th>
+              <th>Nama Bidang</th>
+              <th width="200px">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>PT Maju Jaya</td>
+              <td>Akuntansi</td>
+              <td>
+                <a href="{{url('lowongan/detail')}}" class="btn btn-warning btn-sm">Detail</a>
+                <a href="#" class="btn btn-info btn-sm">Edit</a>
+                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{-- {!! $sekolah->appends(Request::input()); !!} --}}
+      </div>
+    </div>
 
   </div>
 @endsection

@@ -38,9 +38,13 @@
 
       function updateMarker(lat, lng)
       {
+        var info = "";
+        info = info + "lokasimu "+marker.getLatLng().toString()+" <br>";
+        info = info + "coba";
+
         marker
         .setLatLng([lat, lng])
-        .bindPopup("Lokasi mu : "+ marker.getLatLng().toString())
+        .bindPopup(info)
         .openPopup();
 
         return false;
