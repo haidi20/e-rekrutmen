@@ -43,11 +43,8 @@
       }
 
       function kurang()
-      {
-        // var jumlah = $('.form-control').length;
-        // console.log(jumlah);
-        
-        $('.nama_'+jumlah).remove();
+      {        
+        $('.nama_'+nomor).remove();
 
         if(nomor != 1){
           nomor--;
