@@ -22,7 +22,9 @@ class LowonganController extends Controller
 
     public function index()
     {
-    	return view('lowongan.index');
+        $lowongan = $this->lowongan->get();
+
+    	return view('lowongan.index', compact('lowongan'));
     }
 
     public function show()

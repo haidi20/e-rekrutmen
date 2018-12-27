@@ -31,16 +31,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>PT Maju Jaya</td>
-              <td>Akuntansi</td>
-              <td>
-                <a href="{{url('lowongan/detail')}}" class="btn btn-warning btn-sm">Detail</a>
-                <a href="#" class="btn btn-info btn-sm">Edit</a>
-                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-              </td>
-            </tr>
+            @forelse($lowongan as $index => $item)
+              <tr>
+                <td>{{$index + 1}}</td>
+                <td>{{$item->nama_perusahaan}}</td>
+                <td>{{$item->nama_bidang}}</td>
+                <td>
+                  <a href="{{route('lowongan.edit',$item->id)}}" class="btn btn-sm btn-info">
+                       Edit
+                  </a>
+                  <a href="{{ route('lowongan.destroy',$item->id)}}"
+                      data-method="delete" data-confirm="Anda yakin akan menghapus data ini ?"
+                      class="btn btn-sm btn-danger" title="Hapus Data">
+                      Delete
+                  </a>
+                </td>
+              </tr> 
+            @empty
+              <tr>
+                <td colspan="4" align="center">Kosong</td>
+              </tr>
+            @endforelse
           </tbody>
         </table>
         {{-- {!! $sekolah->appends(Request::input()); !!} --}}
