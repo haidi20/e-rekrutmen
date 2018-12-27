@@ -20,17 +20,17 @@
       </div>
     </div>
     <hr class="dashed m mt20 mb20">
-    <form action="{{route('tanggungjawab.index')}}" method="get" class="form-horizontal">
+    <form action="{{$action}}" method="POST" class="form-horizontal">
       <div class="row">
         
           <div class="col-md-5 col-md-offset-1">
-              <input type="hidden" name="_method" value="#">
+              <input type="hidden" name="_method" value="{{$method}}">
               {{ csrf_field() }}
               <div class="row">
                 <div class="col-md">
                   <div class="form-group">
-                    <label for="nama">Nama Perusahaan</label>
-                    <input type="text" id="nama" name="nama" class="form-control" value="{{old('nama')}}">
+                    <label for="nama_perusahaan">Nama Perusahaan</label>
+                    <input type="text" id="nama_perusahaan" name="nama_perusahaan" class="form-control" value="{{old('nama')}}">
                     <p class="tulisan-error"></p>
                   </div>
                 </div>
@@ -38,17 +38,22 @@
               <div class="row">
                 <div class="col-md">
                   <div class="form-group">
-                    <label for="bidang">Nama Bidang</label>
-                    <input type="text" id="bidang" name="bidang" class="form-control" value="{{old('bidang')}}">
-                    <p class="tulisan-error"></p>
+                    <label for="bidang_id">Nama Bidang</label>
+                    <select name="bidang_id" id="bidang_id" class="form-control">
+                      <option value="">Pilih Nama Bidang</option>
+                      @foreach ($bidang as $index => $item)
+                        <option value="{{$item->id}}" {{old('bidang_id') == $item->id?'selected':''}}>{{$item->nama}}</option>
+                      @endforeach
+                    </select>
+                   {{--  <p class="tulisan-error">{{kondisi_tulisan_error($errors,'pendidikan_id')}}</p> --}}
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md">
                   <div class="form-group">
-                    <label for="pendidikan_id">Nama Kota</label>
-                    <select name="pendidikan_id" id="pendidikan_id" class="form-control">
+                    <label for="nama_kota">Nama Kota</label>
+                    <select name="nama_kota" id="nama_kota" class="form-control">
                       <option value="">Pilih Nama Kota</option>
                       
                     </select>
@@ -59,31 +64,17 @@
                 <div class="col-md">
                   <div class="form-group">
                     <label class="control-label" for="focusedInput">Tanggal</label>
-                    <input type="text" id="datepicker" class="form-control">
+                    <input type="text" id="datepicker" name="tanggal" class="form-control">
                   </div>
                 </div>
               </div>
-              {{-- <div class="row">
-                <div class="col-md">
-                  <div class="form-group {{kondisi_error($errors,'pendidikan_id')}}">
-                    <label for="pendidikan_id">Jenjang Pendidikan</label>
-                    <select name="pendidikan_id" id="pendidikan_id" class="form-control">
-                      <option value="">Pilih Jenjang Pendidikan</option>
-                      @foreach ($pendidikan as $index => $item)
-                        <option value="{{$item->id}}" {{old('pendidikan_id') == $item->id?'selected':''}}>{{$item->nama}}</option>
-                      @endforeach
-                    </select>
-                    <p class="tulisan-error">{{kondisi_tulisan_error($errors,'pendidikan_id')}}</p>
-                  </div>
-                </div>
-              </div> --}}
           </div>
           <div class="col-md-5 col-md-offset-1">
             <div class="row">
               <div class="col-md">
                 <div class="form-group">
-                  <label for="logo">Logo Perusahaan</label>
-                  <input type="file" id="logo" name="logo">
+                  <label for="gambar">Logo Perusahaan</label>
+                  <input type="file" id="gambar" name="gambar">
                 </div>
               </div>
             </div>
@@ -97,18 +88,7 @@
                 </div>
               </div>
             </div>
-            {{-- <div class="row">
-              <div class="col-md-6" align="center">
-                <h5>Tugas dan Tanggung Jawab</h5>
-                <a href="javascript:;" onClick="tanggungjawab()" class="btn btn-lg btn-default">Buat</a>
-              </div>
-              <div class="col-md-6" align="center">
-                <h5>Kualifikasi</h5>
-                <a href="javascript:;" class="btn btn-lg btn-default">Buat</a>
-              </div>
-            </div> --}}
           </div>
-          @include('lowongan.modal')
       </div>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">

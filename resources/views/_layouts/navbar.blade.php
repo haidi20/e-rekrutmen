@@ -25,6 +25,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{url('pengaturan')}}">Pengaturan</a></li>
             <li><a href="{{url('biodata')}}">Biodata</a></li>
+            <li><a href="{{url('bidang')}}">Bidang</a></li>
             <li><a href="{{route('lowongan.index')}}">Lowongan</a></li>
           </ul>
         </li>
