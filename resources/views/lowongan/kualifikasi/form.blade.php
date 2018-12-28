@@ -11,15 +11,15 @@
       </div>
     </div>
     <hr class="dashed m mt20 mb20">
-    <form action="#" method="post" class="form-horizontal">
-      <input type="hidden" name="_method" value="#">
+    <form action="{{$action}}" method="post" class="form-horizontal">
+      <input type="hidden" name="_method" value="{{$method}}">
       {{ csrf_field() }}
       <div class="row">
         <div class="col-md-5 col-md-offset-1">
            <div class="col-md">
               <div class="form-group">
                 <label for="nama">Nama Kualifikasi</label>
-                <input type="text" id="nama" name="nama" class="form-control" value="{{old('nama')}}">
+                <input type="text" id="nama" name="nama[]" class="form-control" value="{{old('nama')}}">
                 <p class="tulisan-error"></p>
               </div>
             </div>

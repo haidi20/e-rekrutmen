@@ -37,6 +37,7 @@
                 <td>{{$item->nama_perusahaan}}</td>
                 <td>{{$item->nama_bidang}}</td>
                 <td>
+                  <a href="{{route('lowongan.show', $item->id)}}" class="btn btn-sm btn-warning">Detail</a>
                   <a href="{{route('lowongan.edit',$item->id)}}" class="btn btn-sm btn-info">
                        Edit
                   </a>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Lowongan;
 use App\Models\Bidang;
+use App\Models\Lowongan;
+use App\Models\Kualifikasi;
+use App\Models\TanggungJawab;
 
 use App\Supports\Api;
 use App\Supports\FileManager;
@@ -13,18 +15,22 @@ use App\Supports\FileManager;
 class LowonganController extends Controller
 {
     public function __construct(
+                                Api $api,                                
+                                Bidang $bidang,
                                 Request $request, 
                                 Lowongan $lowongan,
-                                Bidang $bidang,
                                 FileManager $filemanager,
-                                Api $api
+                                Kualifikasi $kualifikasi,
+                                TanggungJawab $tanggungjawab
                             )
     {
-        $this->lowongan     = $lowongan;
-        $this->bidang       = $bidang;
         $this->api          = $api;
-        $this->filemanager  = $filemanager;
+        $this->bidang       = $bidang;
         $this->request      = $request;
+        $this->lowongan     = $lowongan;
+        $this->kualifikasi  = $kualifikasi;
+        $this->filemanager  = $filemanager;
+        $this->tanggungjawab= $tanggungjawab;
     }
 
     public function index()
@@ -34,9 +40,12 @@ class LowonganController extends Controller
     	return view('lowongan.index', compact('lowongan', 'namakota'));
     }
 
-    public function show()
+    public function show($id)
     {
-    	return view('lowongan.detail');
+        $kualifikasi    = $this->kualifikasi->paginate(10);
+        $tanggungjawab  = $this->tanggungjawab->paginate(10);
+
+    	return view('lowongan.detail', compact('kualifikasi', 'tanggungjawab'));
     }
 
     public function create()
