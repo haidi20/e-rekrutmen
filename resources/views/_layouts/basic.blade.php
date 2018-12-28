@@ -23,8 +23,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
     $( function() {
-      $( "#datepicker" ).datepicker();
-      $('#select2').select2();
+      $("#datepicker").datepicker();
+      $('#bidang_id').select2();
+      $('#nama_kota').select2();
     } );
     </script>
     <script>

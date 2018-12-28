@@ -8,7 +8,7 @@ use App\Models\Lowongan;
 use App\Models\Bidang;
 
 use App\Supports\Api;
-use GuzzleHttp\Client;
+use App\Supports\FileManager;
 
 class LowonganController extends Controller
 {
@@ -16,20 +16,20 @@ class LowonganController extends Controller
                                 Request $request, 
                                 Lowongan $lowongan,
                                 Bidang $bidang,
-                                Client $client,
+                                FileManager $filemanager,
                                 Api $api
                             )
     {
-        $this->lowongan = $lowongan;
-        $this->bidang   = $bidang;
-        $this->api      = $api;
-        $this->client   = $client;
-        $this->request  = $request;
+        $this->lowongan     = $lowongan;
+        $this->bidang       = $bidang;
+        $this->api          = $api;
+        $this->filemanager  = $filemanager;
+        $this->request      = $request;
     }
 
     public function index()
     {
-        $lowongan = $this->lowongan->get();
+        $lowongan = $this->lowongan->paginate(10);
 
     	return view('lowongan.index', compact('lowongan', 'namakota'));
     }
@@ -61,8 +61,8 @@ class LowonganController extends Controller
             $method = 'POST';
         }
 
-        $kota   = $this->api->kota()->getData();
         $bidang = $this->bidang->get();
+        $kota   = $this->api->kota()->getData();
         $kota   = $kota->data;
 
         foreach ($kota as $index => $item) {
@@ -101,11 +101,11 @@ class LowonganController extends Controller
         $lowongan->bidang_id            = request('bidang_id');
         $lowongan->nama_kota            = request('nama_kota');
         $lowongan->tanggal              = format_tanggal(request('tanggal'));
-        $lowongan->gambar               = request('gambar');
-        $lowongan->profile_perusahaan   = request('profile');
+        $lowongan->gambar               = $this->filemanager->getFileName(request()->file('logo'), $lowongan->gambar);
+        $lowongan->profile_perusahaan   = request('profil');
         $lowongan->save();
 
-        return redirect()->route('tanggungjawab.index');
+        return redirect()->route('tanggungjawab.index', ['lowongan' =>  $lowongan->id]);
     }
 
     public function destroy($id)

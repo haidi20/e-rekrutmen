@@ -54,7 +54,7 @@
             @endforelse
           </tbody>
         </table>
-        {{-- {!! $sekolah->appends(Request::input()); !!} --}}
+        {!! $lowongan->links() !!}
       </div>
     </div>
 
