@@ -7,16 +7,23 @@ use Illuminate\Http\Request;
 use App\Models\Lowongan;
 use App\Models\Bidang;
 
+use App\Supports\Api;
+use GuzzleHttp\Client;
+
 class LowonganController extends Controller
 {
     public function __construct(
                                 Request $request, 
                                 Lowongan $lowongan,
-                                Bidang $bidang
+                                Bidang $bidang,
+                                Client $client,
+                                Api $api
                             )
     {
         $this->lowongan = $lowongan;
         $this->bidang   = $bidang;
+        $this->api      = $api;
+        $this->client   = $client;
         $this->request  = $request;
     }
 
@@ -24,7 +31,7 @@ class LowonganController extends Controller
     {
         $lowongan = $this->lowongan->get();
 
-    	return view('lowongan.index', compact('lowongan'));
+    	return view('lowongan.index', compact('lowongan', 'namakota'));
     }
 
     public function show()
@@ -54,10 +61,16 @@ class LowonganController extends Controller
             $method = 'POST';
         }
 
+        $kota   = $this->api->kota()->getData();
         $bidang = $this->bidang->get();
+        $kota   = $kota->data;
+
+        foreach ($kota as $index => $item) {
+            $namakota[] = $item->name;
+        }        
 
         return view('lowongan.form',compact(
-            'action', 'method', 'bidang'
+            'action', 'method', 'bidang', 'namakota'
         ));
     }
 

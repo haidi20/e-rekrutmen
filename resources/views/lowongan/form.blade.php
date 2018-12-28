@@ -30,7 +30,7 @@
                 <div class="col-md">
                   <div class="form-group">
                     <label for="nama_perusahaan">Nama Perusahaan</label>
-                    <input type="text" id="nama_perusahaan" name="nama_perusahaan" class="form-control" value="{{old('nama')}}">
+                    <input type="text" id="nama_perusahaan" name="nama_perusahaan" class="form-control" value="{{old('nama')}}" required>
                     <p class="tulisan-error"></p>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="col-md">
                   <div class="form-group">
                     <label for="bidang_id">Nama Bidang</label>
-                    <select name="bidang_id" id="bidang_id" class="form-control">
+                    <select name="bidang_id" id="bidang_id" class="form-control" required>
                       <option value="">Pilih Nama Bidang</option>
                       @foreach ($bidang as $index => $item)
                         <option value="{{$item->id}}" {{old('bidang_id') == $item->id?'selected':''}}>{{$item->nama}}</option>
@@ -52,10 +52,12 @@
               <div class="row">
                 <div class="col-md">
                   <div class="form-group">
-                    <label for="nama_kota">Nama Kota</label>
-                    <select name="nama_kota" id="nama_kota" class="form-control">
+                    <label for="select2">Nama Kota</label>
+                    <select name="nama_kota" id="select2" class="form-control" required>
                       <option value="">Pilih Nama Kota</option>
-                      
+                      @foreach($namakota as $index => $item)
+                        <option value="{{$item}}" {{old('nama_kota') == $item ? 'selected' : ''}}>{{$item}}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
@@ -64,7 +66,7 @@
                 <div class="col-md">
                   <div class="form-group">
                     <label class="control-label" for="focusedInput">Tanggal</label>
-                    <input type="text" id="datepicker" name="tanggal" class="form-control">
+                    <input type="text" id="datepicker" name="tanggal" class="form-control" required>
                   </div>
                 </div>
               </div>
@@ -74,7 +76,7 @@
               <div class="col-md">
                 <div class="form-group">
                   <label for="gambar">Logo Perusahaan</label>
-                  <input type="file" id="gambar" name="gambar">
+                  <input type="file" id="gambar" name="gambar" required>
                 </div>
               </div>
             </div>
@@ -83,7 +85,7 @@
                 <div class="form-group">
                   <label for="textArea" class="col-md-5 control-label">Profil Perusahaan</label>
                   <div class="col-md-12">
-                    <textarea class="form-control" rows="3" name="profil" id="textArea"></textarea>
+                    <textarea class="form-control" rows="3" name="profil" id="textArea" required></textarea>
                   </div>
                 </div>
               </div>
