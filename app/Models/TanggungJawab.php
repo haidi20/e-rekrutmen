@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TanggungJawab extends Model
 {
-    protected $table = 'tanggung_jawabs';
+    public function scopeLowongan($query, $id)
+    {
+    	return $query->where('lowongan_id', $id);
+    }
 }

@@ -43,7 +43,24 @@
         	</div>
         </div>
         <div class="col-md-8">
-        	<div class="row">
+        	@foreach($lowongan as $index => $item)
+				<div class="row">
+	        		<div class="col-md-12">
+	        			<a href="{{route('dashboard.show', $item->id)}}" >
+		        			<div class="jumbotron">
+				        		<h3>{{$item->nama_perusahaan}}</h3>
+				        		<h5>{{$item->nama_bidang}} | {{$item->nama_kota}} | {{$item->tanggal}}</h6> <br>
+				        		<h6>
+				        			@foreach($item->tanggungjawab as $key => $value)
+										{{$value->nama}},
+				        			@endforeach
+				        		</h6>
+				        	</div>
+				        </a>
+	        		</div>
+	        	</div>
+        	@endforeach
+        	{{-- <div class="row">
         		<div class="col-md-12">
         			<a href="{{url('detail')}}" >
 	        			<div class="jumbotron">
@@ -69,7 +86,8 @@
 			        </a>
         		</div>
         	</div>
-        </div>
+        </div> --}}
+        {!! $lowongan->links(); !!}
     </div>
 </div>
 @endsection

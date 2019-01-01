@@ -42,8 +42,10 @@ class LowonganController extends Controller
 
     public function show($id)
     {
-        $kualifikasi    = $this->kualifikasi->paginate(10);
-        $tanggungjawab  = $this->tanggungjawab->paginate(10);
+        $kualifikasi    = $this->kualifikasi->lowongan($id)->paginate(10);
+        $tanggungjawab  = $this->tanggungjawab->lowongan($id)->paginate(10);
+
+        session()->put('detail', true);
 
     	return view('lowongan.detail', compact('kualifikasi', 'tanggungjawab'));
     }
@@ -114,7 +116,10 @@ class LowonganController extends Controller
         $lowongan->profile_perusahaan   = request('profil');
         $lowongan->save();
 
-        return redirect()->route('tanggungjawab.index', ['lowongan' =>  $lowongan->id]);
+        session()->put('detail', false);
+        session()->put('lowongan', $lowongan->id);
+
+        return redirect()->route('tanggungjawab.index');
     }
 
     public function destroy($id)

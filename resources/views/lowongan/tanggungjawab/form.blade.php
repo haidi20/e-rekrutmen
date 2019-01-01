@@ -8,7 +8,7 @@
         <h2>Tugas dan Tanggung Jawab</h2>
       </div>
       <div class="col-md-6 text-right">
-        <a href="{{route('tanggungjawab.index')}}" class="btn btn-info btn-md button-top">Kembali</a>
+        <a href="{{$back}}" class="btn btn-info btn-md button-top">Kembali</a>
       </div>
     </div>
     <hr class="dashed m mt20 mb20">

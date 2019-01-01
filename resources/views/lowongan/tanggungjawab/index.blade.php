@@ -48,7 +48,7 @@
             @endforelse
           </tbody>
         </table>
-        {{-- {!! $sekolah->appends(Request::input()); !!} --}}
+        {!! $tanggungjawab->links(); !!}
       </div>
     </div>
   </div>

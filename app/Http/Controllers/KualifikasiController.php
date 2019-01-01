@@ -19,7 +19,8 @@ class KualifikasiController extends Controller
 
     public function index()
     {
-    	$kualifikasi = $this->kualifikasi->get();
+    	$lowongan       = session()->get('lowongan');
+        $kualifikasi  = $this->kualifikasi->lowongan($lowongan)->paginate(10);
 
     	return view('lowongan.kualifikasi.index', compact('kualifikasi'));
     }
@@ -44,10 +45,17 @@ class KualifikasiController extends Controller
         }else{
             $action = route('kualifikasi.store');
             $method = 'POST';
+        } 
+
+        // kondisi fitur detail lowongan atau table kualifikasi
+        if(session()->get('detail')){
+            $back = route('lowongan.show', session()->get('lowongan'));
+        }else{
+            $back = route('kualifikasi.index');
         }       
 
         return view('lowongan.kualifikasi.form',compact(
-            'action', 'method'
+            'action', 'method', 'back'
         ));
     }
 

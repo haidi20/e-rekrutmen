@@ -13,6 +13,16 @@ class Lowongan extends Model
     	return $this->belongsTo('App\Models\Bidang');
     }
 
+    public function tanggungjawab()
+    {
+        return $this->hasMany('App\Models\TanggungJawab', 'lowongan_id');
+    }
+
+    public function kualifikasi()
+    {
+        return $this->hasMany('App\Models\Kualifikasi', 'lowongan_id');
+    }
+
     public function getNamaBidangAttribute()
     {
     	if($this->bidang){

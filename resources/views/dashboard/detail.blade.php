@@ -7,8 +7,8 @@
         	<div class="jumbotron">
         		<div class="row">
         			<div class="col-md-10">
-        				<h3>Nama Perusahaan</h3>
-			    		<h6>Nama Bidang | Kota Lowongan | Tanggal</h6> <br>
+        				<h3>{{$lowongan->nama_perusahaan}}</h3>
+			    		<h6>{{$lowongan->nama_bidang}} | {{$lowongan->nama_kota}} | {{$lowongan->tanggal}}</h6> <br>
         			</div>
         			<div class="col-md-2">
         				<a href="{{url('dashboard')}}" class="btn btn-md btn-info button-top">Kembali</a>
@@ -20,15 +20,15 @@
         			<div class="col-md-12">
         				<h4>Tugas dan Tanggung Jawab :</h4>
         				<ul>
-        					<li>Penjelasan Tugas 1</li>
-        					<li>Penjelasan Tugas 2</li>
-        					<li>Penjelasan Tugas 3</li>
+        					@foreach($lowongan->tanggungjawab as $index => $item)
+                                <li>{{$item->nama}}</li>
+                            @endforeach
         				</ul>
         				<h4>Kualifikasi :</h4>
         				<ul>
-        					<li>Kualifikasi 1</li>
-        					<li>Kualifikasi 2</li>
-        					<li>Kualifikasi 3</li>
+        					@foreach($lowongan->kualifikasi as $index => $item)
+                                <li>{{$item->nama}}</li>
+                            @endforeach
         				</ul>
         			</div>
         		</div>
@@ -40,13 +40,14 @@
         <div class="col-md-4">
         	<div class="jumbotron">
         		<div align="center">
-        			<div style="width:100px; height:100px; background-color: black" >
-        			
-        			</div>
+        			<div class="form-group">
+                        <label for="foto">Foto</label><br>
+                        <img src="{{asset('images')}}/{{$lowongan->gambar}}" width="200">
+                    </div>
         		</div>
         		<h5 align="center">
-        			Profil perusahaan adalah deskripsi ringkas suatu perusahaan yang mencerminkan kualitas serta fokus kerja dari satu perusahaan. Biasanya, profil perusahaan (company profile) dibutuhkan saat kamu akan mengajukan penawaran atau investasi kepada calon pembeli, investor maupun kerjasama dengan mitra strategis bisnis.
-        		</h5>
+        		  {{$lowongan->profile_perusahaan}}	
+                </h5>
         	</div>
         </div>
     </div>

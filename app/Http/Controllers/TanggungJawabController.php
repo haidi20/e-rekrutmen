@@ -15,14 +15,12 @@ class TanggungJawabController extends Controller
 	{
 		$this->tanggungjawab 	= $tanggungjawab;
 		$this->request 			= $request;
-
-		session()->put('lowongan', request('lowongan'));
 	}
 
     public function index()
-    {
-    	$tanggungjawab 	= $this->tanggungjawab->paginate(10);
-    	$lowongan 		= session()->get('lowongan');
+    {        
+        $lowongan       = session()->get('lowongan');
+    	$tanggungjawab 	= $this->tanggungjawab->lowongan($lowongan)->paginate(10);
 
     	return view('lowongan.tanggungjawab.index', compact('lowongan', 'tanggungjawab'));
     }
@@ -47,10 +45,17 @@ class TanggungJawabController extends Controller
         }else{
             $action = route('tanggungjawab.store');
             $method = 'POST';
-        }       
+        }
+
+        // kondisi fitur detail lowongan atau table tugas dan tanggung jawab
+        if(session()->get('detail')){
+            $back = route('lowongan.show', session()->get('lowongan'));
+        }else{
+            $back = route('tanggungjawab.index');
+        }   
 
         return view('lowongan.tanggungjawab.form',compact(
-            'action', 'method'
+            'action', 'method', 'back'
         ));
     }
 

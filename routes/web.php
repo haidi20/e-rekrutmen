@@ -2,12 +2,8 @@
 Route::get('/',function(){
   return redirect()->route('dashboard');
 });
-Route::get('dashboard', function(){
-  return view('dashboard.index');
-})->name('dashboard');
-Route::get('detail', function(){
-  return view('dashboard.detail'); 
-});
+
+Route::resource('dashboard', 'DashboardController');
 
 // Route::group(['middleware' => 'auth'],function(){
   Route::get('pengaturan', 'PengaturanController@index');
