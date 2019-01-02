@@ -42,7 +42,7 @@
         		<div align="center">
         			<div class="form-group">
                         <label for="foto">Foto</label><br>
-                        <img src="{{asset('images')}}/{{$lowongan->gambar}}" width="200">
+                        <img src="{{asset('storages')}}/{{$lowongan->gambar}}" width="200">
                     </div>
         		</div>
         		<h5 align="center">

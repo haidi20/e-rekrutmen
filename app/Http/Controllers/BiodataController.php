@@ -73,7 +73,7 @@ class BiodataController extends Controller
         }
 
         $input = $this->request->except('_token');
-        // return $input;
+        // return $input->file('gambar');
 
         // $this->validate(request(),[
         //   'nik'  => 'required',
@@ -81,8 +81,8 @@ class BiodataController extends Controller
         // ]);
 
         $biodata->user_id      		= Auth::user()->id;
-        $biodata->gambar      		= $this->filemanager->getFileName($this->request->file('gambar'), $biodata->gambar);
-        $biodata->cv      			= $this->filemanager->getFileName($this->request->file('cv'), $biodata->cv);
+        $biodata->gambar      		= $this->filemanager->getFileName(request()->file('gambar'), $biodata->gambar);
+        $biodata->cv      			= $this->filemanager->getFileName(request()->file('cv'), $biodata->cv);
         $biodata->tempat_lahir 		= request('tempat_lahir');
         $biodata->nama_sekolah 		= request('nama_sekolah');
         $biodata->tahun_kelulusan 	= request('tahun_kelulusan');

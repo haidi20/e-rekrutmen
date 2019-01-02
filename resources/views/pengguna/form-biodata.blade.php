@@ -2,11 +2,26 @@
 
 @section('script-top')
 	<style>
-		a:link, a:visited {
+		/*a:link, a:visited {
 			color:#0d2244;
 			text-decoration: none;
-		}
+		}*/
 	</style>
+@endsection
+
+@section('script-bottom')
+	<script>
+		// $(document).ready( function(){
+			var gambar 	= $('#gambar').val();
+			var cv 		= $('#cv').val();
+
+			console.log(gambar);
+
+			// if(gambar && cv){
+			// 	$('#gambar #cv').hide();
+			// }
+		// });
+	</script>
 @endsection
 
 @section('konten')
@@ -19,22 +34,32 @@
         			<hr>
         		</div>
         		<br>
-        		<form action="{{$action}}" method="POST">
+        		<form action="{{$action}}" method="POST" enctype="multipart/form-data">
         			<input type="hidden" name="_method" value="{{$method}}">
       				{{ csrf_field() }}
 	        		<div class="row">
 	        			<div class="col-md-6">
 	        				<div class="form-group">
+							  @if(old('gambar'))
+							  <a href="{{asset('storages')}}/{{old('gambar')}}" class="btn btn-md btn-primary"> Download File Foto </a>
+							  @else
 							  <label class="control-label" for="focusedInput">Masukkan Foto</label>
-							  <input type="file" name="gambar" required value="{{old('gambar')}}">
+							  <input type="file" name="gambar" id="gambar" value="{{old('gambar')}}">
+							  @endif
+							  {{-- <h3 class="done">Done</h3> --}}
 							</div>
 							<div class="form-group">
-							  <label class="control-label" for="focusedInput">Masukkan CV</label>
-							  <input type="file" name="cv" required value="{{old('cv')}}">
+								@if(old('gambar'))
+							  		<a href="{{asset('storages')}}/{{old('cv')}}" class="btn btn-md btn-primary"> Download File CV </a>
+							  	@else
+							  		<label class="control-label" for="focusedInput">Masukkan CV</label>
+							  		<input type="file" name="cv" id="cv" value="{{old('cv')}}">
+							  	@endif
+							  {{-- <h3 class="done">Done</h3> --}}
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Tempat Lahir</label>
-							  <input type="text" name="tempat_lahir" class="form-control" value="{{old('tempat_lahir')}}" required>
+							  <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control" value="{{old('tempat_lahir')}}" required>
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Tanggal Lahir</label>

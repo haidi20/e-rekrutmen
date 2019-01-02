@@ -13,8 +13,8 @@
         		<div class="row">
         			<div class="col-md-4">
         				<div align="center">
-        					<div style="width:100px; height:100px; background-color: black; color:white"> foto </div><br>
-        					<a href="#" class="btn btn-md btn-primary"> Download File CV </a>
+        					<img src="{{asset('storages')}}/{{$biodata->gambar}}" width="200"><br><br>
+        					<a href="{{asset('storages')}}/{{$biodata->cv}}" class="btn btn-md btn-primary"> Download File CV </a>
         				</div>        				
         			</div>
         			<div class="col-md-4">
@@ -44,7 +44,7 @@
 						</div>
         			</div>
         			<div class="col-md-4">
-        				<a href="{{url('biodata/create')}}" class="btn btn-md btn-primary">Edit Data</a>
+        				<a href="{{route('biodata.edit', $biodata->id)}}" class="btn btn-md btn-primary">Edit Data</a>
         			</div>
         		</div>
         	</div>
