@@ -15,8 +15,8 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4 batas-atas">
           <div class="account-wall">
             <h2 align="center">Pengaturan</h2>
-            {{-- <form class="form-signin" action="{{route('login')}}" method="post"> --}}
-            <form class="form-signin" action="#" method="post">
+            <form class="form-signin" action="{{route('pengaturan.store')}}" method="post">
+            {{-- <form class="form-signin" action="#" method="post"> --}}
               {{ csrf_field() }}
               <input type="password" name="password" class="form-control" placeholder="Kata Sandi Baru" required>
               <input type="password" name="repassword" class="form-control" placeholder="Ulang Kata Sandi" required>
