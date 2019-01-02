@@ -19,38 +19,40 @@
         			<hr>
         		</div>
         		<br>
-        		<form action="{{url('dashboard')}}" method="get">
+        		<form action="{{$action}}" method="POST">
+        			<input type="hidden" name="_method" value="{{$method}}">
+      				{{ csrf_field() }}
 	        		<div class="row">
 	        			<div class="col-md-6">
 	        				<div class="form-group">
 							  <label class="control-label" for="focusedInput">Masukkan Foto</label>
-							  <input type="file">
+							  <input type="file" name="gambar" required value="{{old('gambar')}}">
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Masukkan CV</label>
-							  <input type="file">
+							  <input type="file" name="cv" required value="{{old('cv')}}">
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Tempat Lahir</label>
-							  <input type="text" class="form-control">
+							  <input type="text" name="tempat_lahir" class="form-control" value="{{old('tempat_lahir')}}" required>
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Tanggal Lahir</label>
-							  <input type="text" id="datepicker" class="form-control">
+							  <input type="text" name="tanggal_lahir" id="datepicker" value="{{old('tanggal_lahir')}}" class="form-control" required>
 							</div>
 	        			</div>
 	        			<div class="col-md-6">
 	        				<div class="form-group">
 							  <label class="control-label" for="focusedInput">Nama Sekolah</label>
-							  <input type="input" class="form-control">
+							  <input type="input" name="nama_sekolah" class="form-control" value="{{old('nama_sekolah')}}" required>
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Tahun Kelulusan</label>
-							  <input type="input" class="form-control">
+							  <input type="input" class="form-control" name="tahun_kelulusan" value="{{old('tahun_kelulusan')}}" required>
 							</div>
 							<div class="form-group">
 							  <label class="control-label" for="focusedInput">Nilai AKhir</label>
-							  <input type="input" class="form-control">
+							  <input type="input" class="form-control" name="nilai_akhir" value="{{old('nilai_akhir')}}" required>
 							</div>
 	        			</div>
 	        		</div>

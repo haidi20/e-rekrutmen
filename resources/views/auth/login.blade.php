@@ -16,7 +16,7 @@
           <div class="account-wall">
             <h2 align="center">Masuk</h2>
             {{-- <form class="form-signin" action="{{route('login')}}" method="post"> --}}
-            <form class="form-signin" action="#" method="post">
+            <form class="form-signin" action="{{url('login')}}" method="post">
               {{ csrf_field() }}
               <input type="text" name="email" class="form-control" placeholder="email" required autofocus>
               <input type="password" name="password" class="form-control" placeholder="Password" required>

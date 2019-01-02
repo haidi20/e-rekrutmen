@@ -9,7 +9,7 @@ class FileManager{
 			// @unlink(public_path('storages/' . $karyawan->foto));
 			$extension      = $files->getClientOriginalExtension();
 	    	$fileName       = str_random(8) . '.' . $extension;
-		    $files->move("images/", $fileName);
+		    $files->move("storages/", $fileName);
 		    return $fileName;
 		}else{
 			return $nameBefore;

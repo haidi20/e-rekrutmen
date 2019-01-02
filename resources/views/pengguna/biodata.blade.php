@@ -20,27 +20,27 @@
         			<div class="col-md-4">
         				<div class="form-group">
 							<label class="control-label" for="focusedInput">Username</label>
-							<h5>ahmad dani</h5>
+							<h5>{{Auth::user()->username}}</h5>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="focusedInput">Tempat Lahir</label>
-							<h5>Jakarta</h5>
+							<h5>{{$biodata->tempat_lahir}}</h5>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="focusedInput">Tanggal Lahir</label>
-							<h5>26-10-1990</h5>
+							<h5>{{$biodata->tanggal_lahir}}</h5>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="focusedInput">Nama Sekolah</label>
-							<h5>SMK Maju Jaya</h5>
+							<h5>{{$biodata->nama_sekolah}}</h5>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="focusedInput">Tahun Kelulusan</label>
-							<h5>2015</h5>
+							<h5>{{$biodata->tahun_kelulusan}}</h5>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="focusedInput">Nilai Akhir</label>
-							<h5>80,5</h5>
+							<h5>{{$biodata->nilai_akhir}}</h5>
 						</div>
         			</div>
         			<div class="col-md-4">
