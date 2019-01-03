@@ -10,7 +10,7 @@
     @yield('script-top')
   </head>
   <body>
-    <div id="app">
+    <div>
       @yield('tubuh')
     </div>
     <script>

@@ -18,7 +18,7 @@
             {{-- <form class="form-signin" action="{{route('login')}}" method="post"> --}}
             <form class="form-signin" action="{{url('login')}}" method="post">
               {{ csrf_field() }}
-              <input type="text" name="email" class="form-control" placeholder="email" required autofocus>
+              <input type="text" name="email" class="form-control" placeholder="email" required autofocus value="{{old('email')}}">
               <input type="password" name="password" class="form-control" placeholder="Password" required>
               <button class="btn btn-lg btn-primary btn-block" type="submit">
                   Oke

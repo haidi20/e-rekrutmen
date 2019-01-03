@@ -994,7 +994,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_session___default.a);
  */
 
 var app = new Vue({
-  el: '#app'
+  // el: '#app'
 });
 
 /***/ }),

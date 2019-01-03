@@ -15,29 +15,38 @@
         <div class="col-md-4">
         	<div class="jumbotron">
         		<div class="form-group">
-				  <label class="control-label" for="focusedInput">Nama Kota</label>
-				  <select class="form-control">
-				  	<option>Pilih Kota</option>
-				  </select>
+					<label for="nama_kota">Nama Kota</label>
+	                <select name="nama_kota" id="nama_kota" class="form-control" required>
+	                	<option value="">Pilih Nama Kota</option>
+	                  	@foreach($namakota as $index => $item)
+	                		<option value="{{$item}}" {{old('nama_kota') == $item ? 'selected' : ''}}>{{$item}}</option>
+	                  	@endforeach
+	                </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Nama Bidang</label>
-				  <select class="form-control">
+				  <select class="form-control" id="bidang_id" name="bidang_id">
 				  	<option>Pilih Bidang</option>
+			  		@foreach($bidang as $index => $item)
+                    	<option value="{{$item->id}}" {{old('bidang') == $item->id ? 'selected' : ''}}>{{$item->nama}}</option>
+                 	@endforeach
 				  </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Periode</label>
 				  <select class="form-control">
 				  	<option>Pilih Periode</option>
-				  	<option>Januari - Juni</option>
-				  	<option>Juli - Desember</option>
+				  	<option value="1">Januari - Juni</option>
+				  	<option value="2">Juli - Desember</option>
 				  </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Tahun</label>
 				  <select class="form-control">
 				  	<option>Pilih Tahun</option>
+				  	@for($i = $tahun; $i >= $tahun_sebelumnya; $i--)
+						<option value="">{{$i}}</option>
+				  	@endfor
 				  </select>
 				</div>
         	</div>
