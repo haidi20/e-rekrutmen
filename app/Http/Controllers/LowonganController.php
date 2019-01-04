@@ -72,13 +72,8 @@ class LowonganController extends Controller
             $method = 'POST';
         }
 
-        $bidang = $this->bidang->get();
-        $kota   = $this->api->kota()->getData();
-        $kota   = $kota->data;
-
-        foreach ($kota as $index => $item) {
-            $namakota[] = $item->name;
-        }        
+        $bidang     = $this->bidang->get();
+        $namakota   = $this->namaKota();     
 
         return view('lowongan.form',compact(
             'action', 'method', 'bidang', 'namakota'
@@ -128,5 +123,17 @@ class LowonganController extends Controller
         $lowongan->delete();
 
         return redirect()->back();
+    }
+
+    public function namaKota()
+    {
+        $kota             = $this->api->kota()->getData();
+        $kota             = $kota->data;
+
+        foreach ($kota as $index => $item) {
+            $namakota[] = $item->name;
+        }
+
+        return $namakota;
     }
 }

@@ -3,6 +3,14 @@
 @section('konten')
   <div class="container">
     <div class="row">
+        @if(session()->has('note'))
+            <div class="alert alert-dismissible alert-success">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <h4> Kirim Lamaran Telah Berhasil</h4>
+            </div>
+        @endif
+    </div>
+    <div class="row">
         <div class="col-md-8">
         	<div class="jumbotron">
         		<div class="row">
@@ -33,7 +41,7 @@
         			</div>
         		</div>
                 <div class="row">
-                    <a href="#" class="btn btn-md btn-success button-top">Kirim Lamaran</a>
+                    <a href="{{route('lamaran.index', ['lowongan' => $lowongan->id])}}" class="btn btn-md btn-success button-top {{kondisi_lamaran($lowongan->id)}}">Kirim Lamaran</a>
                 </div>
         	</div>
         </div>

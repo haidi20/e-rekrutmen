@@ -27,17 +27,12 @@ class DashboardController extends Controller
 
     public function index()
     {
-    	$lowongan         = $this->lowongan->paginate(5);
-        $tahun            = Carbon::now()->format('Y');
-        $tahun_sebelumnya = Carbon::now()->subYears(2)->format('Y');     
+        $namakota         = $this->namaKota(); 
         $bidang           = $this->bidang->get();
-        $kota             = $this->api->kota()->getData();
-        $kota             = $kota->data;
-
-        foreach ($kota as $index => $item) {
-            $namakota[] = $item->name;
-        }      
-
+        $tahun            = Carbon::now()->format('Y');
+        $tahun_sebelumnya = Carbon::now()->subYears(2)->format('Y'); 
+        $lowongan         = $this->lowongan->kondisi()->paginate(5);     
+        
     	return view('dashboard.index', compact(
             'lowongan', 'bidang', 'namakota', 'tahun', 'tahun_sebelumnya'
         ));
@@ -48,5 +43,17 @@ class DashboardController extends Controller
         $lowongan = $this->lowongan->find($id);
 
         return view('dashboard.detail', compact('lowongan'));
+    }
+
+    public function namaKota()
+    {
+        $kota             = $this->api->kota()->getData();
+        $kota             = $kota->data;
+
+        foreach ($kota as $index => $item) {
+            $namakota[] = $item->name;
+        }
+
+        return $namakota;
     }
 }

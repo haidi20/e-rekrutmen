@@ -14,41 +14,46 @@
     <div class="row">
         <div class="col-md-4">
         	<div class="jumbotron">
+        		<form action="{{route('dashboard.index')}}" method="GET">
         		<div class="form-group">
 					<label for="nama_kota">Nama Kota</label>
-	                <select name="nama_kota" id="nama_kota" class="form-control" required>
+	                <select name="nama_kota" id="nama_kota" class="form-control">
 	                	<option value="">Pilih Nama Kota</option>
 	                  	@foreach($namakota as $index => $item)
-	                		<option value="{{$item}}" {{old('nama_kota') == $item ? 'selected' : ''}}>{{$item}}</option>
+	                		<option value="{{$item}}" {{request('nama_kota') == $item ? 'selected' : ''}}>{{$item}}</option>
 	                  	@endforeach
 	                </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Nama Bidang</label>
 				  <select class="form-control" id="bidang_id" name="bidang_id">
-				  	<option>Pilih Bidang</option>
+				  	<option value="">Pilih Bidang</option>
 			  		@foreach($bidang as $index => $item)
-                    	<option value="{{$item->id}}" {{old('bidang') == $item->id ? 'selected' : ''}}>{{$item->nama}}</option>
+                    	<option value="{{$item->id}}" {{request('bidang') == $item->id ? 'selected' : ''}}>{{$item->nama}}</option>
                  	@endforeach
 				  </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Periode</label>
-				  <select class="form-control">
+				  <select class="form-control" name="periode">
 				  	<option>Pilih Periode</option>
-				  	<option value="1">Januari - Juni</option>
-				  	<option value="2">Juli - Desember</option>
+				  	<option value="1" {{request('periode') == 1 ? 'selected' : ''}}>Januari - Juni</option>
+				  	<option value="2" {{request('periode') == 2 ? 'selected' : ''}}>Juli - Desember</option>
 				  </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Tahun</label>
-				  <select class="form-control">
+				  <select class="form-control" name="tahun">
 				  	<option>Pilih Tahun</option>
 				  	@for($i = $tahun; $i >= $tahun_sebelumnya; $i--)
-						<option value="">{{$i}}</option>
+						<option value="{{$i}}" {{request('tahun') == $i ? 'selected' : ''}}>{{$i}}</option>
 				  	@endfor
 				  </select>
 				</div>
+				<div class="form-group">
+					<button class="btn btn-success btn-md">Cari</button>
+				</div>
+				</form>
         	</div>
         </div>
         <div class="col-md-8">
