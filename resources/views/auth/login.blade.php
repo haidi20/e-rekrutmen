@@ -13,6 +13,16 @@
   <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4 batas-atas">
+          @if (count($errors) > 0)
+          <div class="alert alert-dismissible alert-success">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <h4>
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+              </h4>
+            </div>
+          @endif
           <div class="account-wall">
             <h2 align="center">Masuk</h2>
             {{-- <form class="form-signin" action="{{route('login')}}" method="post"> --}}

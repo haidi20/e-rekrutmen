@@ -12,9 +12,13 @@ if( ! function_exists('format_tanggal') )
 	}
 }
 
-if( ! function_exists('kondisi_lamaran') )
+if( ! function_exists('kondisi_peran') )
 {
-	function kondisi_lamaran($lowongan){
-		return \Auth::user()->lowongan_id == $lowongan ? 'disabled' : '' ; 
+	function kondisi_peran(){
+		if(Auth::user()){
+            return Auth::user()->role == 'admin' ? 'admin' : '';
+        }else{
+            return '';
+        }
 	}
 }

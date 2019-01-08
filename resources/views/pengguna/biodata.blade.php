@@ -20,7 +20,7 @@
         			<div class="col-md-4">
         				<div class="form-group">
 							<label class="control-label" for="focusedInput">Username</label>
-							<h5>{{Auth::user()->username}}</h5>
+							<h5>{{$biodata->nama_pengguna}}</h5>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="focusedInput">Tempat Lahir</label>
@@ -44,7 +44,11 @@
 						</div>
         			</div>
         			<div class="col-md-4">
+                        @if(kondisi_peran() == 'pengguna')
         				<a href="{{route('biodata.edit', $biodata->id)}}" class="btn btn-md btn-primary">Edit Data</a>
+                        @else
+                        <a href="{{route('lamaran.terima', ['user' => $biodata->id_pengguna])}}" class="btn btn-md btn-success">Terima</a>
+                        @endif
         			</div>
         		</div>
         	</div>

@@ -24,7 +24,7 @@ class BiodataController extends Controller
 
 	public function index()
 	{
-		$user_id = Auth::user()->id;
+		$user_id = request('user') ? request('user') : Auth::user()->id;
 		$biodata = $this->biodata->where('user_id', $user_id)->first();
 
 		return view('pengguna.biodata', compact('biodata'));

@@ -13,7 +13,8 @@ Route::group(['middleware' => 'auth'],function(){
   Route::resource('tanggungjawab', 'TanggungJawabController');
   Route::resource('kualifikasi', 'KualifikasiController');
 
-  Route::resource('lamaran', 'LamaranController');
+  Route::get('lamaran', 'LamaranController@index')->name('lamaran.index');
+  Route::get('lamaran/terima', 'LamaranConroller@terima')->name('lamaran.terima');
 });
 
 //auth laravel

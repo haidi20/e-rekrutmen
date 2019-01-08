@@ -29,14 +29,14 @@
 				  <select class="form-control" id="bidang_id" name="bidang_id">
 				  	<option value="">Pilih Bidang</option>
 			  		@foreach($bidang as $index => $item)
-                    	<option value="{{$item->id}}" {{request('bidang') == $item->id ? 'selected' : ''}}>{{$item->nama}}</option>
+                    	<option value="{{$item->id}}" {{request('bidang_id') == $item->id ? 'selected' : ''}}>{{$item->nama}}</option>
                  	@endforeach
 				  </select>
 				</div>
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Periode</label>
 				  <select class="form-control" name="periode">
-				  	<option>Pilih Periode</option>
+				  	<option value="">Pilih Periode</option>
 				  	<option value="1" {{request('periode') == 1 ? 'selected' : ''}}>Januari - Juni</option>
 				  	<option value="2" {{request('periode') == 2 ? 'selected' : ''}}>Juli - Desember</option>
 				  </select>
@@ -44,7 +44,7 @@
 				<div class="form-group">
 				  <label class="control-label" for="focusedInput">Tahun</label>
 				  <select class="form-control" name="tahun">
-				  	<option>Pilih Tahun</option>
+				  	{{-- <option value="">Pilih Tahun</option> --}}
 				  	@for($i = $tahun; $i >= $tahun_sebelumnya; $i--)
 						<option value="{{$i}}" {{request('tahun') == $i ? 'selected' : ''}}>{{$i}}</option>
 				  	@endfor

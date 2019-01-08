@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Bidang;
+use App\Models\Lamaran;
 use App\Models\Lowongan;
 use App\Models\Kualifikasi;
 use App\Models\TanggungJawab;
@@ -17,6 +18,7 @@ class LowonganController extends Controller
     public function __construct(
                                 Api $api,                                
                                 Bidang $bidang,
+                                Lamaran $lamaran,
                                 Request $request, 
                                 Lowongan $lowongan,
                                 FileManager $filemanager,
@@ -26,6 +28,7 @@ class LowonganController extends Controller
     {
         $this->api          = $api;
         $this->bidang       = $bidang;
+        $this->lamaran      = $lamaran;
         $this->request      = $request;
         $this->lowongan     = $lowongan;
         $this->kualifikasi  = $kualifikasi;
@@ -42,12 +45,14 @@ class LowonganController extends Controller
 
     public function show($id)
     {
+        $lamaran        = $this->lamaran->lowongan($id)->paginate(10);
         $kualifikasi    = $this->kualifikasi->lowongan($id)->paginate(10);
         $tanggungjawab  = $this->tanggungjawab->lowongan($id)->paginate(10);
 
+        // session tombol kembali ke page detail lowongan
         session()->put('detail', true);
 
-    	return view('lowongan.detail', compact('kualifikasi', 'tanggungjawab'));
+    	return view('lowongan.detail', compact('kualifikasi', 'tanggungjawab', 'lamaran'));
     }
 
     public function create()

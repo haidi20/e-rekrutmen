@@ -22,8 +22,18 @@ class LamaranController extends Controller
     	$user->lowongan_id = request('lowongan');
     	$user->save();
 
+        $lamaran = $this->lamaran;
+        $lamaran->lowongan_id   = request('lowongan');
+        $lamaran->user_id       = Auth::user()->id;
+        $lamaran->save();
+
     	session()->flash('note', true);
 
     	return redirect()->back();
+    }
+
+    public function terima()
+    {
+        return request('user');
     }
 }

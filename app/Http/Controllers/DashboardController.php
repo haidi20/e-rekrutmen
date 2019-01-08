@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Bidang;
+use App\Models\Lamaran;
 use App\Models\Lowongan;
 
 use App\Supports\Api;
 
+use Auth;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -17,16 +19,20 @@ class DashboardController extends Controller
                                 Api $api,                                
                                 Bidang $bidang,
                                 Request $request,
+                                Lamaran $lamaran,
     							Lowongan $lowongan
     							){
         $this->api      = $api;
         $this->bidang   = $bidang;
-    	$this->request 	= $request;
+        $this->request  = $request;
+    	$this->lamaran 	= $lamaran;
     	$this->lowongan = $lowongan;
     }
 
     public function index()
     {
+        // return $this->formatWaktu()->dari .' ' . $this->formatWaktu()->ke;
+
         $namakota         = $this->namaKota(); 
         $bidang           = $this->bidang->get();
         $tahun            = Carbon::now()->format('Y');
@@ -40,9 +46,16 @@ class DashboardController extends Controller
 
     public function show($id)
     {
-        $lowongan = $this->lowongan->find($id);
+        $user           = Auth::user()->id;
 
-        return view('dashboard.detail', compact('lowongan'));
+        $lowongan       = $this->lowongan->find($id);
+        $carilamaran    = $this->lamaran->where(['user_id' => $user, 'lowongan_id' => $id])->first();
+        
+        $role           = kondisi_peran();
+        $kondisilamaran = $carilamaran ? 'disabled' : '';
+        
+
+        return view('dashboard.detail', compact('lowongan', 'role', 'kondisilamaran'));
     }
 
     public function namaKota()

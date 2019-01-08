@@ -41,7 +41,11 @@
         			</div>
         		</div>
                 <div class="row">
-                    <a href="{{route('lamaran.index', ['lowongan' => $lowongan->id])}}" class="btn btn-md btn-success button-top {{kondisi_lamaran($lowongan->id)}}">Kirim Lamaran</a>
+                    @if($role == 'admin')
+                    
+                    @else
+                    <a href="{{route('lamaran.index', ['lowongan' => $lowongan->id])}}" class="btn btn-md btn-success button-top {{$kondisilamaran}}">Kirim Lamaran</a>
+                    @endif
                 </div>
         	</div>
         </div>
