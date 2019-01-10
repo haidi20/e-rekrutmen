@@ -45,7 +45,7 @@ class LamaranController extends Controller
 
         Mail::send('email.pesan', $data, function($message)
         {
-            $message->to('haidinurhadinata@gmail.com', 'Jon Doe')->subject('Selamat');
+            $message->to('nhaidii@yahoo.com', 'Haidi')->subject('Selamat');
         });
     }
 }
