@@ -46,13 +46,19 @@ class DashboardController extends Controller
 
     public function show($id)
     {
-        $user           = Auth::user()->id;
+        if(Auth::user()){
+            $user           = Auth::user()->id;
+            $carilamaran    = $this->lamaran->where(['user_id' => $user, 'lowongan_id' => $id])->first();
+            $kondisilamaran = $carilamaran;
+        }else{
+            $kondisilamaran = '';
+        }
 
-        $lowongan       = $this->lowongan->find($id);
-        $carilamaran    = $this->lamaran->where(['user_id' => $user, 'lowongan_id' => $id])->first();
         
-        $role           = Auth::user() ? Auth::user()->role : '';
-        $kondisilamaran = $carilamaran ? 'disabled' : '';
+
+        $lowongan           = $this->lowongan->find($id);        
+        $role               = Auth::user() ? Auth::user()->role : '';
+        
         
 
         return view('dashboard.detail', compact('lowongan', 'role', 'kondisilamaran'));
