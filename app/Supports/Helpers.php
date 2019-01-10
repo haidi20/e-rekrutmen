@@ -11,14 +11,3 @@ if( ! function_exists('format_tanggal') )
 		return $tanggal->year.'-'.$tanggal->month.'-'.$tanggal->day;
 	}
 }
-
-if( ! function_exists('kondisi_peran') )
-{
-	function kondisi_peran(){
-		if(Auth::user()){
-            return Auth::user()->role == 'admin' ? 'admin' : '';
-        }else{
-            return '';
-        }
-	}
-}

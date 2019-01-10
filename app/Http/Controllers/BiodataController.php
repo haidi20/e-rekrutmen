@@ -24,10 +24,11 @@ class BiodataController extends Controller
 
 	public function index()
 	{
-		$user_id = request('user') ? request('user') : Auth::user()->id;
-		$biodata = $this->biodata->where('user_id', $user_id)->first();
+		$user_id      = request('user') ? request('user') : Auth::user()->id;
+		$biodata      = $this->biodata->where('user_id', $user_id)->first();
+        $kondisiperan = Auth::user() ? Auth::user()->role : '';
 
-		return view('pengguna.biodata', compact('biodata'));
+		return view('pengguna.biodata', compact('biodata', 'kondisiperan'));
 	}
 
     public function create()
@@ -90,7 +91,7 @@ class BiodataController extends Controller
         $biodata->tanggal_lahir		= format_tanggal(request('tanggal_lahir'));
     	$biodata->save();
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('biodata.index');
     }
 
     public function destroy($id)

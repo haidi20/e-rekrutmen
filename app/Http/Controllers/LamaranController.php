@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 use App\Models\Lamaran;
 
 use Auth;
+use Mail;
 
 class LamaranController extends Controller
 {
-	public function __construct(Request $request, Lamaran $lamaran)
+	public function __construct(
+                                Mail $mail,
+                                Request $request, 
+                                Lamaran $lamaran
+                            )
 	{
-		$this->lamaran = $lamaran;
-		$this->request = $request;
+        $this->mail     = $mail;
+		$this->lamaran  = $lamaran;
+		$this->request  = $request;
 	}
 
     public function index()
@@ -27,6 +33,7 @@ class LamaranController extends Controller
         $lamaran->user_id       = Auth::user()->id;
         $lamaran->save();
 
+        // kondisi show notifikasi lamaran telah di kirim sebagai user
     	session()->flash('note', true);
 
     	return redirect()->back();
@@ -34,6 +41,11 @@ class LamaranController extends Controller
 
     public function terima()
     {
-        return request('user');
+        $data = ['pesan' => 'coba'];
+
+        Mail::send('email.pesan', $data, function($message)
+        {
+            $message->to('haidinurhadinata@gmail.com', 'Jon Doe')->subject('Selamat');
+        });
     }
 }

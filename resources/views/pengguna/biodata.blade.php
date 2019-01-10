@@ -44,7 +44,7 @@
 						</div>
         			</div>
         			<div class="col-md-4">
-                        @if(kondisi_peran() == 'pengguna')
+                        @if($kondisiperan == 'user')
         				<a href="{{route('biodata.edit', $biodata->id)}}" class="btn btn-md btn-primary">Edit Data</a>
                         @else
                         <a href="{{route('lamaran.terima', ['user' => $biodata->id_pengguna])}}" class="btn btn-md btn-success">Terima</a>
