@@ -40,7 +40,7 @@ class LowonganController extends Controller
     {
         $lowongan = $this->lowongan->paginate(10);
 
-    	return view('lowongan.index', compact('lowongan', 'namakota'));
+    	return view('lowongan.index', compact('lowongan'));
     }
 
     public function show($id)
