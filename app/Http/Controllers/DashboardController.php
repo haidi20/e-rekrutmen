@@ -51,7 +51,7 @@ class DashboardController extends Controller
         $lowongan       = $this->lowongan->find($id);
         $carilamaran    = $this->lamaran->where(['user_id' => $user, 'lowongan_id' => $id])->first();
         
-        $role           = kondisi_peran();
+        $role           = Auth::user() ? Auth::user()->role : '';
         $kondisilamaran = $carilamaran ? 'disabled' : '';
         
 
