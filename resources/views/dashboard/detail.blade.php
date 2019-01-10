@@ -6,7 +6,7 @@
         @if(session()->has('note'))
             <div class="alert alert-dismissible alert-success">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <h4> Kirim Lamaran Telah Berhasil</h4>
+              <h4> Pengguna Telah Di Terima</h4>
             </div>
         @endif
     </div>

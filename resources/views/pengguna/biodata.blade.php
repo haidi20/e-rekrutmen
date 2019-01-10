@@ -3,6 +3,14 @@
 @section('konten')
   <div class="container">
     <div class="row">
+        @if(session()->has('note'))
+            <div class="alert alert-dismissible alert-success">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <h4> Kirim Lamaran Telah Berhasil</h4>
+            </div>
+        @endif
+    </div>
+    <div class="row">
         <div class="col-md-12">
         	<div class="jumbotron">
         		<div align="center">

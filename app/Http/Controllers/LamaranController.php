@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
 use App\Models\Lamaran;
 
 use Auth;
@@ -12,11 +13,13 @@ use Mail;
 class LamaranController extends Controller
 {
 	public function __construct(
+                                User $user,
                                 Mail $mail,
                                 Request $request, 
                                 Lamaran $lamaran
                             )
 	{
+        $this->user     = $user;
         $this->mail     = $mail;
 		$this->lamaran  = $lamaran;
 		$this->request  = $request;
@@ -41,11 +44,17 @@ class LamaranController extends Controller
 
     public function terima()
     {
-        $data = ['pesan' => 'coba'];
+        $data   = ['pesan' => 'Selamat, Anda Di terima'];
 
-        Mail::send('email.pesan', $data, function($message)
+        $user   = $this->user->where('id', request('user'))->first();
+
+        Mail::send('email.pesan', $data, function($message) use ($user)
         {
-            $message->to('nhaidii@yahoo.com', 'Haidi')->subject('Selamat');
+            $message->to($user->email, $user->username)->subject('Selamat');
         });
+
+        session()->flash('note', true);
+
+        return redirect()->back();
     }
 }
